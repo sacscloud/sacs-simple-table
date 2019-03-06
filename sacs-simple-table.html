@@ -23,7 +23,8 @@ Custom property | Description | Default
 `--sacs-table-second-row-color` | Color of secondary rows | `white`
 `--sacs-table-background-head` | Background of table header | `white`
 -->
-
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="./sacs-simple-table-styles.html">
 
 <dom-module id="sacs-simple-table">
@@ -41,12 +42,11 @@ Custom property | Description | Default
                                 </tr>
                         </thead>
                         <tbody>
-                                <template is="dom-repeat" items="[[dataTable]]" as="data">
+                                <template is="dom-repeat" items="[[dataTable]]" as="data" sort="__orderTable">
                                         <tr>
-                                          <template is="dom-repeat" items="[[data]]" as="content">
+                                          <template is="dom-repeat" items="[[data.row]]" as="content" >
                                                   <td>
-                                                       <paper-item>[[content]]</paper-item> 
-                                                      
+                                                       <paper-item>[[content]]</paper-item>                  
                                                   </td>
                                           </template>
                                         </tr>

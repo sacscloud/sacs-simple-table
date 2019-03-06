@@ -5,10 +5,9 @@
  * 
  * `<sacs-simple-table>` creates dynamically responsive table.
  *
- * In typical use, just slap some `<sacs-simple-table>` at the top of your body:
+ * You need pass a json with data for the table `<sacs-simple-table>` like this:
  *
- *     <body>
- *       <sacs-simple-table></sacs-simple-table>
+ *       <sacs-simple-table data-table="[[dataTable]]" titles="[[titles]]"></sacs-simple-table>
  */
 
 'use strict';
@@ -36,6 +35,41 @@ Polymer({
         titles: {
             type: Array,
             value: []
+        },
+
+
+        /**
+         *Value for sort of table
+         * @attribute order
+         * @type {String}
+         * @default "ascending"
+        */
+        sort:{
+            type:"String",
+            value:"ascending"
         }
+    },
+
+    /**
+    * Sort data of table.
+    *
+    * @param {number, string} fisrt value of table to comparate and sort
+    * @param {number, string} second value of table to comparate and sort
+    * 
+    * @return {number} always return `-1` the validation is what sort.
+    */
+    __orderTable: function(first, second){
+           
+          if(this.sort === "ascending"){
+            if(first.sortData < second.sortData){
+                return -1;
+            }
+
+          }else if (this.sort === "descending"){
+            if(first.sortData > second.sortData){
+                return -1;
+            }
+
+          }
     }
 });

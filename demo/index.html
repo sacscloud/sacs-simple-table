@@ -22,30 +22,40 @@
       <h3>Basic sacs-simple-table demo</h3>
       <demo-snippet>
         <template>
-          <sacs-simple-table titles='["uno", "dos", "tres","cuatro", "cinco"]' data-table='[
-          [
-              "Storefront 15-04-2016 4:00PM",
+          <sacs-simple-table titles='["uno", "dos", "tres","cuatro", "cinco"]'
+           data-table='[
+          {
+            "row":[
+              "Btorefront 15-04-2016 4:00PM",
               "Storefront",
               "Partial",
               "Partial",
               "Partial"
-           ],
-          
-           [
-              "Storefront 15-04-2016 4:00PM",
-              "Storefront",
-              "Partial",
-              "Partial",
-              "Partial"
-           ],
+            ],
+            "sortData": "Btorefront"
+          },
 
-           [
-              "Storefront 15-04-2016 4:00PM",
+          {
+           "row":[
+              "Ztorefront 15-04-2016 4:00PM",
               "Storefront",
               "Partial",
               "Partial",
               "Partial"
-           ]
+           ],
+           "sortData":"Ztorefront"
+          },
+          
+          {
+           "row":[
+              "Ctorefront 15-04-2016 4:00PM",
+              "Storefront",
+              "Partial",
+              "Partial",
+              "Partial"
+           ],
+           "sortData":"Ctorefront"
+          }
       ]'></sacs-simple-table>
         </template>
       </demo-snippet>
