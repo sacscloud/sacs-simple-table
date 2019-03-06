@@ -1,0 +1,64 @@
+<!-- 
+@license
+Copyright (c) 2019 The sacscloud Authors.
+This component is part of catalog of components of sacscloud. It`s part of own design system. 
+-->
+
+<!--
+`<sacs-simple-table>` is a simple data table container. This component is responsive with a horizontal sroll.
+  By default table is empty, you need to pass in a propertie titles and content.
+  
+  For Example:
+    
+       <sacs-simple-table titles="[[titlesTable]]" data-table="[[dataTable]]"></sacs-simple-table>
+
+
+### Styling
+The following custom properties and mixins are available for styling:
+Custom property | Description | Default
+----------------|-------------|----------
+`--sacs-table-horizontal-scroll-color` | Color of vertical scroll when the table overflows  | `#36c6d3`
+`--sacs-table-horizontal-scroll-hover-color` | Color of hover in vertical scroll when the table overflows | `#0de3f6`
+`--sacs-table-first-row-color` | Color of principal rows | `#f2f2f2`
+`--sacs-table-second-row-color` | Color of secondary rows | `white`
+`--sacs-table-background-head` | Background of table header | `white`
+-->
+
+<link rel="import" href="./sacs-simple-table-styles.html">
+
+<dom-module id="sacs-simple-table">
+        <template>
+           <style include="sacs-simple-table-styles"></style>
+           <div class="container_table">
+                <table>
+                        <thead>
+                                <tr>
+                                  <template is="dom-repeat" items="[[titles]]" as="title">
+                                        <th>
+                                           <paper-item>[[title]]</paper-item>
+                                        </th>
+                                  </template>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <template is="dom-repeat" items="[[dataTable]]" as="data">
+                                        <tr>
+                                          <template is="dom-repeat" items="[[data]]" as="content">
+                                                  <td>
+                                                       <paper-item>[[content]]</paper-item> 
+                                                      
+                                                  </td>
+                                          </template>
+                                        </tr>
+                                </template>
+                        </tbody>
+                </table>
+           </div> 
+
+        </template>
+
+        <script src="./sacs-simple-table.js">
+
+        </script>
+
+</dom-module>

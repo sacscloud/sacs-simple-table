@@ -1,0 +1,13 @@
+{
+  "name": "sacs-simple-table",
+  "description": "data table responsive",
+  "main": "sacs-simple-table.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.11.3"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#1.0.0"
+  }
+}
