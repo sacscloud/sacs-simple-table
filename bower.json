@@ -1,7 +1,11 @@
 {
   "name": "sacs-simple-table",
+  "version":"1.0.2",
   "description": "data table responsive",
   "main": "sacs-simple-table.html",
+  "authors": [
+    "The sacscloud Authors"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#1.11.3",
     "paper-item":"PolymerElements/paper-item#1.2.2"
