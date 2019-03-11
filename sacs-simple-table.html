@@ -36,13 +36,13 @@ Custom property | Description | Default
                                 <tr>
                                   <template is="dom-repeat" items="[[titles]]" as="title">
                                         <th>
-                                           <paper-item>[[title]]</paper-item>
+                                           <paper-item>[[title.label]]</paper-item>
                                         </th>
                                   </template>
                                 </tr>
                         </thead>
                         <tbody>
-                                <template is="dom-repeat" items="[[dataTable]]" as="data" sort="__orderTable">
+                                <template is="dom-repeat" items="[[dataToRender]]" as="data" sort="__orderTable">
                                         <tr>
                                           <template is="dom-repeat" items="[[data.row]]" as="content" >
                                                   <td>

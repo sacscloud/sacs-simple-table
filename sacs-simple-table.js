@@ -26,6 +26,11 @@ Polymer({
             value: []
         },
 
+        dataToRender:{
+          type:Array,
+          value:[]
+        },
+
         /**
          *Data for create titles of table dynamically
          * @attribute titles
@@ -50,6 +55,12 @@ Polymer({
         }
     },
 
+    attached: function () {
+       console.log("Iniciado...")
+      this.__formatDataTable(this.dataTable);
+      console.log("OBJECT",this.dataToRender);
+    },
+
     /**
     * Sort data of table.
     *
@@ -59,7 +70,7 @@ Polymer({
     * @return {number} always return `-1` the validation is what sort.
     */
     __orderTable: function(first, second){
-           
+           console.log("order222", this.sort)
           if(this.sort === "ascending"){
             if(first.sortData < second.sortData){
                 return -1;
@@ -71,5 +82,28 @@ Polymer({
             }
 
           }
+    },
+
+
+    __formatDataTable: function(array) {
+        const arrayRows = [];
+        let cellContent;
+           
+        for (let objects of array) {
+            for (let obj in objects) {
+             
+               const arrayFiltered = this.titles.filter(element => element.id === obj)
+               const positionElement = this.titles.indexOf(arrayFiltered[0]);
+               cellContent = objects[obj];
+              
+                if (positionElement !== -1) {
+                   arrayRows[positionElement] = cellContent;
+                   console.log(cellContent)
+                }
+             
+            }
+
+            this.push('dataToRender', JSON.parse(JSON.stringify({row:arrayRows, sortData: cellContent })));
+        }       
     }
 });

@@ -22,41 +22,52 @@
       <h3>Basic sacs-simple-table demo</h3>
       <demo-snippet>
         <template>
-          <sacs-simple-table titles='["uno", "dos", "tres","cuatro", "cinco"]'
-           data-table='[
-          {
-            "row":[
-              "Btorefront 15-04-2016 4:00PM",
-              "Storefront",
-              "Partial",
-              "Partial",
-              "Partial"
-            ],
-            "sortData": "Btorefront"
-          },
-
-          {
-           "row":[
-              "Ztorefront 15-04-2016 4:00PM",
-              "Storefront",
-              "Partial",
-              "Partial",
-              "Partial"
-           ],
-           "sortData":"Ztorefront"
-          },
-          
-          {
-           "row":[
-              "Ctorefront 15-04-2016 4:00PM",
-              "Storefront",
-              "Partial",
-              "Partial",
-              "Partial"
-           ],
-           "sortData":"Ctorefront"
-          }
-      ]'></sacs-simple-table>
+          <sacs-simple-table titles='
+          [
+          {"id": "manualCount", "label": "Conteo Manual"},
+          {"id": "count", "label": "Contador"},
+          {"id": "inventorycount", "label": "Conteo Fisico"}]'
+           data-table='[{
+            "$key": "-L_Q-yOVCgn4DuKtoymp",
+            "count": "ad",
+            "created": 1552010176169,
+            "inventorycount": "dasd",
+            "modified": 1552010176169,
+            "outlet": "adasd",
+            "startdate": "asda",
+            "starttime": "adad",
+            "status": "asdasd",
+            "uid": "sYAz35uEWzgDIX19BneSCdWGoyj2",
+            "manualCount":"manual count"
+            },
+            
+            {
+            "$key": "-L_Q0rKOQRAoWx2aC3UO",
+            "count": "asdasd",
+            "created": 1552010409385,
+            "inventorycount": "otro inventory",
+            "modified": 1552010409385,
+            "outlet": "asdasd",
+            "startdate": "asdads",
+            "starttime": "asdasd",
+            "status": "asdasd",
+            "uid": "sYAz35uEWzgDIX19BneSCdWGoyj2",
+            "manualCount":"manual count 2"
+            },
+            {
+              "$key": "-L_Q0rKOQRAoWx2aC3UO",
+              "count": "otro count",
+              "created": 1552010409385,
+              "inventorycount": "ultimo inventory",
+              "modified": 1552010409385,
+              "outlet": "asdasd",
+              "startdate": "asdads",
+              "starttime": "asdasd",
+              "status": "asdasd",
+              "uid": "sYAz35uEWzgDIX19BneSCdWGoyj2",
+              "manualCount":"manual count 3"
+              }
+            ]'></sacs-simple-table>
         </template>
       </demo-snippet>
     </div>
