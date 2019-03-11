@@ -26,6 +26,12 @@ Polymer({
             value: []
         },
 
+        /**
+         * Data for render table dynamically
+         * @attribute dataToRender
+         * @type {Array}
+         * @default []
+        */
         dataToRender:{
           type:Array,
           value:[]
@@ -39,7 +45,8 @@ Polymer({
         */
         titles: {
             type: Array,
-            value: []
+            value: [],
+            observer: '__formatDataTable'
         },
 
 
@@ -55,11 +62,6 @@ Polymer({
         }
     },
 
-    attached: function () {
-       console.log("Iniciado...")
-      this.__formatDataTable(this.data);
-      console.log("OBJECT",this.dataToRender);
-    },
 
     /**
     * Sort data of table.
@@ -70,7 +72,6 @@ Polymer({
     * @return {number} always return `-1` the validation is what sort.
     */
     __orderTable: function(first, second){
-           console.log("order222", this.sort)
           if(this.sort === "ascending"){
             if(first.sortData < second.sortData){
                 return -1;
@@ -84,21 +85,26 @@ Polymer({
           }
     },
 
+    /**
+    *Create array format to render data of table.
+    *
+    * @param {array} arrayTitles value of observer, array of titles.
+    * 
+    */
+    __formatDataTable: function(arrayTitles) {
 
-    __formatDataTable: function(array) {
         const arrayRows = [];
         let cellContent;
            
-        for (let objects of array) {
+        for (let objects of this.data) {
             for (let obj in objects) {
              
-               const arrayFiltered = this.titles.filter(element => element.id === obj)
-               const positionElement = this.titles.indexOf(arrayFiltered[0]);
+               const arrayFiltered = arrayTitles.filter(element => element.id === obj)
+               const positionElement = arrayTitles.indexOf(arrayFiltered[0]);
                cellContent = objects[obj];
               
                 if (positionElement !== -1) {
                    arrayRows[positionElement] = cellContent;
-                   console.log(cellContent)
                 }
              
             }
