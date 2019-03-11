@@ -61,9 +61,7 @@ Polymer({
             value:"ascending"
         }
     },
-
-
-    /**
+/**
     * Sort data of table.
     *
     * @param {number, string} fisrt value of table to comparate and sort
@@ -92,7 +90,8 @@ Polymer({
     * 
     */
     __formatDataTable: function(arrayTitles) {
-
+        
+        this.dataToRender = [];
         const arrayRows = [];
         let cellContent;
            
