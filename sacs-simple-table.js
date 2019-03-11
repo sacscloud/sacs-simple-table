@@ -23,15 +23,10 @@ Polymer({
         */
         data: {
             type: Array,
-            value: []
+            value: [],
+            observer: "__dataChanged"
         },
 
-        /**
-         * Data for render table dynamically
-         * @attribute dataToRender
-         * @type {Array}
-         * @default []
-        */
         dataToRender:{
           type:Array,
           value:[]
@@ -45,8 +40,7 @@ Polymer({
         */
         titles: {
             type: Array,
-            value: [],
-            observer: '__formatDataTable'
+            value: []
         },
 
 
@@ -61,7 +55,14 @@ Polymer({
             value:"ascending"
         }
     },
-/**
+
+    attached: function () {
+       console.log("Iniciado...")
+      this.__formatDataTable(this.data);
+      console.log("OBJECT",this.dataToRender);
+    },
+
+    /**
     * Sort data of table.
     *
     * @param {number, string} fisrt value of table to comparate and sort
@@ -70,6 +71,7 @@ Polymer({
     * @return {number} always return `-1` the validation is what sort.
     */
     __orderTable: function(first, second){
+           console.log("order222", this.sort)
           if(this.sort === "ascending"){
             if(first.sortData < second.sortData){
                 return -1;
@@ -83,31 +85,31 @@ Polymer({
           }
     },
 
-    /**
-    *Create array format to render data of table.
-    *
-    * @param {array} arrayTitles value of observer, array of titles.
-    * 
-    */
-    __formatDataTable: function(arrayTitles) {
-        
-        this.dataToRender = [];
+
+    __dataChanged: function(array){
+        this.set("dataToRender", []);
+        this.__formatDataTable(array);
+    },
+
+    __formatDataTable: function(array) {
         const arrayRows = [];
         let cellContent;
            
-        for (let objects of this.data) {
+        for (let objects of array) {
             for (let obj in objects) {
              
-               const arrayFiltered = arrayTitles.filter(element => element.id === obj)
-               const positionElement = arrayTitles.indexOf(arrayFiltered[0]);
+               const arrayFiltered = this.titles.filter(element => element.id === obj)
+               const positionElement = this.titles.indexOf(arrayFiltered[0]);
                cellContent = objects[obj];
               
                 if (positionElement !== -1) {
                    arrayRows[positionElement] = cellContent;
+                   console.log(cellContent)
                 }
              
             }
 
+           
             this.push('dataToRender', JSON.parse(JSON.stringify({row:arrayRows, sortData: cellContent })));
         }       
     }
