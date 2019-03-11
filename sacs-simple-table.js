@@ -7,7 +7,7 @@
  *
  * You need pass a json with data for the table `<sacs-simple-table>` like this:
  *
- *       <sacs-simple-table data-table="[[dataTable]]" titles="[[titles]]"></sacs-simple-table>
+ *       <sacs-simple-table data="[[dataTable]]" titles="[[titles]]"></sacs-simple-table>
  */
 
 'use strict';
@@ -17,11 +17,11 @@ Polymer({
     properties: {
         /**
          * Data for create content of table dynamically
-         * @attribute dataTable
+         * @attribute data
          * @type {Array}
          * @default []
         */
-        dataTable: {
+        data: {
             type: Array,
             value: []
         },
@@ -57,7 +57,7 @@ Polymer({
 
     attached: function () {
        console.log("Iniciado...")
-      this.__formatDataTable(this.dataTable);
+      this.__formatDataTable(this.data);
       console.log("OBJECT",this.dataToRender);
     },
 
