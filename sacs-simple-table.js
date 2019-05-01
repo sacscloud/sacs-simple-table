@@ -23,8 +23,7 @@ Polymer({
         */
         data: {
             type: Array,
-            value: [],
-            observer: "__dataChanged"
+            value: []
         },
 
         dataToRender:{
@@ -56,10 +55,15 @@ Polymer({
         }
     },
 
-    attached: function () {
-       console.log("Iniciado...")
-      this.__formatDataTable(this.data);
-      console.log("OBJECT",this.dataToRender);
+    observers:[
+        'handleData(data.*)'
+    ],
+
+    handleData: function(data){
+        if(data.value.length > 0){
+            this.__formatDataTable(data.value);
+        }
+        
     },
 
     /**
@@ -71,7 +75,6 @@ Polymer({
     * @return {number} always return `-1` the validation is what sort.
     */
     __orderTable: function(first, second){
-           console.log("order222", this.sort)
           if(this.sort === "ascending"){
             if(first.sortData < second.sortData){
                 return -1;
@@ -94,6 +97,7 @@ Polymer({
     __formatDataTable: function(array) {
         const arrayRows = [];
         let cellContent;
+
            
         for (let objects of array) {
             for (let obj in objects) {
@@ -111,6 +115,6 @@ Polymer({
 
            
             this.push('dataToRender', JSON.parse(JSON.stringify({row:arrayRows, sortData: cellContent })));
-        }       
+        }
     }
 });
