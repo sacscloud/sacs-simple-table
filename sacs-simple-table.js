@@ -97,7 +97,7 @@ Polymer({
     __formatDataTable: function(array) {
         const arrayRows = [];
         let cellContent;
-
+        this.set("dataToRender", []);
            
         for (let objects of array) {
             for (let obj in objects) {
@@ -107,8 +107,7 @@ Polymer({
                cellContent = objects[obj];
               
                 if (positionElement !== -1) {
-                   arrayRows[positionElement] = cellContent;
-                   console.log(cellContent)
+                   arrayRows[positionElement] = cellContent;                   
                 }
              
             }
